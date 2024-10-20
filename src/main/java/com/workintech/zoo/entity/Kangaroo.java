@@ -12,14 +12,8 @@ public class Kangaroo {
     private Double height;
     private Double weight;
     private String gender;
-    private boolean isAggressive;
+    private Boolean isAggressive;
 
-    public boolean getIsAggressive() {
-        return isAggressive;
-    }
 
-    public void setIsAggressive(boolean isAggressive) {
-        this.isAggressive = isAggressive;
-    }
 
 }

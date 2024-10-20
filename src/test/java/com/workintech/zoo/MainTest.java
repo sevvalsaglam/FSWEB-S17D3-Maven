@@ -66,7 +66,7 @@ class MainTest {
 
     @Test
     @DisplayName("Test Kangaroo Setters")
-    void testKangarooSetters() {
+     void testKangarooSetters() {
 
         Kangaroo kangaroo = new Kangaroo();
         kangaroo.setId(2);
@@ -75,6 +75,7 @@ class MainTest {
         kangaroo.setWeight(70.0);
         kangaroo.setGender("Female");
         kangaroo.setIsAggressive(true);
+
 
 
         assertEquals(2, kangaroo.getId());

@@ -18,6 +18,14 @@ public class KangarooController {
     public void init(){
         kangaroos=new HashMap<>();
     }
+
+    @PostMapping
+    public Kangaroo save(@RequestBody Kangaroo kangaroo){
+        ZooKangarooValidation.checkKangarooExistence(kangaroos, kangaroo.getId(),false);
+        ZooKangarooValidation.checkKangarooWeight(kangaroo.getWeight());
+        kangaroos.put(kangaroo.getId(), kangaroo);
+        return kangaroos.get(kangaroo.getId());
+    }
     @GetMapping
     public List<Kangaroo> find(){
         return this.kangaroos.values().stream().toList();
@@ -26,14 +34,7 @@ public class KangarooController {
     public Kangaroo find(@PathVariable("id") Integer id){
         ZooKangarooValidation.isIdValid(id);
         ZooKangarooValidation.checkKangarooExistence(kangaroos,id,true);
-        return null;
-    }
-    @PostMapping
-    public Kangaroo save(@RequestBody Kangaroo kangaroo){
-        ZooKangarooValidation.checkKangarooExistence(kangaroos, kangaroo.getId(),false);
-        ZooKangarooValidation.checkKangarooWeight(kangaroo.getWeight());
-        kangaroos.put(kangaroo.getId(), kangaroo);
-        return kangaroos.get(kangaroo.getId());
+        return kangaroos.get(id);
     }
     @PutMapping("/{id}")
     public Kangaroo update(@PathVariable("id") Integer id, @RequestBody Kangaroo kangaroo){
